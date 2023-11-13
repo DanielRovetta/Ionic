@@ -1,0 +1,68 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Home
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">testes</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+
+    <ion-list-header>
+      <ion-label>Lista de compras</ion-label>
+    </ion-list-header>
+
+    <strong>Lista de compras</strong>
+    <ion-item *ngFor="let item of listaItens;">
+      <ion-label>{{ item.getDescricao() }}</ion-label>
+      <ion-label>{{ item.getValor() | currency : 'BRL' }}</ion-label>
+    </ion-item>
+
+    <ion-item-group>
+      <ion-item-divider *ngFor="let item of listaItens;">
+        <ion-label>{{ item.getDescricao() }}</ion-label>
+        <ion-label>{{ item.getValor() | currency : 'BRL' }}</ion-label>
+      </ion-item-divider>
+    </ion-item-group>
+
+    <strong>Lista de Pessoas</strong>
+    <ion-item *ngFor="let pessoa of listaPessoas;">
+      <ion-label>{{ pessoa.getNome() }}</ion-label>
+      <ion-label>{{ pessoa.getValorConta() | currency : 'BRL' }}</ion-label>
+    </ion-item>
+
+    <ion-list>
+      <ion-reorder-group [disabled]="false" (ionItemReorder)="handleReorder($any($event))">
+        <ion-item *ngFor="let pessoa of listaPessoas;">
+          <ion-label>{{ pessoa.getNome() }}</ion-label>
+          <ion-label>{{ pessoa.getValorConta() | currency : 'BRL' }}</ion-label>
+          <ion-reorder slot="end"></ion-reorder>
+        </ion-item>
+      </ion-reorder-group>
+    </ion-list>
+  </div>
+
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="conta">
+        <ion-icon name="play-circle"></ion-icon>
+        Conta
+      </ion-tab-button>
+      <ion-tab-button tab="item">
+        <ion-icon name="play-circle"></ion-icon>
+        Itens
+      </ion-tab-button>
+      <ion-tab-button tab="pessoa">
+        <ion-icon name="radio"></ion-icon>
+        Pessoas
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-content>
