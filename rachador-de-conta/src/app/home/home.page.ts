@@ -1,3 +1,4 @@
+import { BusinessService } from 'src/service/business.service';
 import { Component } from '@angular/core';
 import { ItemReorderEventDetail } from '@ionic/angular';
 import { Item } from 'src/class/item';
@@ -14,21 +15,20 @@ export class HomePage {
   listaItens = new Array<Item>;
   listaPessoas = new Array<Pessoa>;
 
-  constructor() {
+  constructor(private business: BusinessService) {
+    let item: Item = new Item(0, "Linguiça", 20.00);
+    let pessoa: Pessoa = new Pessoa(0, "Daniel");
+    this.business.insertPessoa(pessoa);
+    this.business.insertItem(item);
 
-    let item: Item = new Item("Linguiça", 20.00);
-    let pessoa: Pessoa = new Pessoa("Daniel");
-    this.listaItens.push(item);
-    this.listaPessoas.push(pessoa);
-
-    item = new Item("Refrigerante", 20.00);
-    pessoa = new Pessoa("Natalia");
-    this.listaItens.push(item);
-    this.listaPessoas.push(pessoa);
+    item = new Item(0, "Refrigerante", 20.00);
+    pessoa = new Pessoa(0, "Natalia");
+    this.business.insertPessoa(pessoa);
+    this.business.insertItem(item);
   }
 
-  handleReorder(ev: CustomEvent<ItemReorderEventDetail>) {
-    console.log('Dragged from index', ev.detail.from, 'to', ev.detail.to);
-    ev.detail.complete();
+  ngOnInit() {
+    this.listaItens = this.business.getListaItem();
+    this.listaPessoas = this.business.getListaPessoa();
   }
 }
