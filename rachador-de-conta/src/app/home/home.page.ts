@@ -61,7 +61,13 @@ export class HomePage {
   }
 
   ngOnInit() {
+
+  }
+
+  processarContaPessoa() {
     this.listaItens = this.business.getAllItem();
     this.listaPessoas = this.business.getAllPessoa();
+    this.business.processarContaPessoa();
   }
+
 }

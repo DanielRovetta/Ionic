@@ -79,8 +79,6 @@ export class BusinessService {
     this.listaConsumos.push(consumo);
   }
 
-
-
   deleteItem(id: number) {
     let aux = this.listaItens.find((item) => id === item.getId());
     if (aux) {
@@ -103,6 +101,28 @@ export class BusinessService {
       var index = this.listaConsumos.indexOf(aux);
       this.listaConsumos.splice(index, 1);
     }
+  }
+
+  incrementarValorContaPessoaById(id: number, valor: number) {
+    let aux = this.listaPessoas.find((pessoa) => id === pessoa.getId());
+    if (aux) {
+      aux.setValorConta(aux.getValorConta() + valor);
+    }
+  }
+
+  zerarValorContaPessoa() {
+    this.listaPessoas.forEach(pessoa => pessoa.setValorConta(0));
+  }
+
+  processarContaPessoa() {
+    this.zerarValorContaPessoa();
+    this.listaItens.forEach(item => {
+      let consumos = this.getAllConsumoByIdItem(item.getId());
+      let pesos: number = 0;
+      consumos.forEach(consumo => pesos += consumo.getPeso());
+      let fracao = item.getValor() / pesos;
+      consumos.forEach(consumo => this.incrementarValorContaPessoaById(consumo.getPessoa().getId(), fracao * consumo.getPeso()));
+    });
   }
 
 }
