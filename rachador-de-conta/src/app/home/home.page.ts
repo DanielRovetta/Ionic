@@ -16,6 +16,9 @@ export class HomePage {
   listaItens = new Array<Item>;
   listaPessoas = new Array<Pessoa>;
 
+  valorTotalItem = 0;
+  valorTotalPessoa = 0;
+
   constructor(private business: BusinessService) {
     this.business.insertPessoa(new Pessoa(1, "Natalia"));
     this.business.insertPessoa(new Pessoa(2, "Daniel"));
@@ -72,6 +75,10 @@ export class HomePage {
     this.listaItens = this.business.getAllItem();
     this.listaPessoas = this.business.getAllPessoa();
     this.business.processarContaPessoa();
+    this.valorTotalItem = 0;
+    this.valorTotalPessoa = 0;
+    this.business.getAllItem().forEach(item => this.valorTotalItem += item.getValor());
+    this.business.getAllPessoa().forEach(pessoa => this.valorTotalPessoa += pessoa.getValorConta());
   }
 
 }

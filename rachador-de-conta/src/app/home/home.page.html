@@ -14,7 +14,7 @@
   </ion-header>
 
   <div id="container" *ngIf="listaItens.length != 0 && listaItens.length != 0">
-    <strong>Lista de Itens</strong>
+    <h1>Lista de Itens</h1>
     <ion-accordion-group>
       <ion-accordion [value]="item.getId()" *ngFor="let item of listaItens;">
         <ion-item slot="header" color="light">
@@ -31,8 +31,11 @@
         </div>
       </ion-accordion>
     </ion-accordion-group>
+    <h3>Valor Total dos Itens {{ valorTotalItem |currency : 'BRL'}}</h3>
+    <br>
 
-    <strong>Valor por Pessoa</strong>
+
+    <h1>Valor por Pessoa</h1>
     <ion-accordion-group>
       <ion-accordion [value]="pessoa.getId()" *ngFor="let pessoa of listaPessoas;">
         <ion-item slot="header" color="light">
@@ -50,6 +53,7 @@
         </div>
       </ion-accordion>
     </ion-accordion-group>
+    <br>
   </div>
-  <ion-button vertical="bottom" (click)="processarContaPessoa()" expand="full">Atualizar</ion-button>
 </ion-content>
+<ion-button vertical="bottom" (click)="processarContaPessoa()" expand="full">Atualizar</ion-button>

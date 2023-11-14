@@ -85,6 +85,15 @@ export class BusinessService {
       var index = this.listaItens.indexOf(aux);
       this.listaItens.splice(index, 1);
     }
+
+    let aux2 = this.listaConsumos.find((consumo) => id === consumo.getItem().getId());
+    while (aux2) {
+      if (aux2) {
+        var index = this.listaConsumos.indexOf(aux2);
+        this.listaConsumos.splice(index, 1);
+      }
+      aux2 = this.listaConsumos.find((consumo) => id === consumo.getItem().getId());
+    }
   }
 
   deletePessoa(id: number) {
@@ -93,6 +102,17 @@ export class BusinessService {
       var index = this.listaPessoas.indexOf(aux);
       this.listaPessoas.splice(index, 1);
     }
+
+    let aux2 = this.listaConsumos.find((consumo) => id === consumo.getPessoa().getId());
+    while (aux2) {
+      if (aux2) {
+        var index = this.listaConsumos.indexOf(aux2);
+        this.listaConsumos.splice(index, 1);
+      }
+      aux2 = this.listaConsumos.find((consumo) => id === consumo.getPessoa().getId());
+    }
+
+
   }
 
   deleteConsumo(id: number) {

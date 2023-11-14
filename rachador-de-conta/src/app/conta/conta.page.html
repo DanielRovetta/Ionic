@@ -12,7 +12,7 @@
   </ion-header>
 
   <div id="container">
-    <strong>Lista de Consumo</strong>
+    <h1>Lista de Consumo</h1>
     <ion-item *ngFor="let consumo of listaConsumos;">
       <ion-label>{{ consumo.getPessoa().getNome()}}</ion-label>
       <ion-label>{{ consumo.getItem().getDescricao()}}</ion-label>

@@ -12,7 +12,7 @@
   </ion-header>
 
   <div id="container" *ngIf="listaPessoas.length != 0">
-    <strong>Lista de Pessoas</strong>
+    <h1>Lista de Pessoas</h1>
     <ion-item *ngFor="let pessoa of listaPessoas;">
       <ion-label>{{ pessoa.getNome() }}</ion-label>
       <ion-icon (click)="deletePessoa(pessoa.getId())" name="close"></ion-icon>
