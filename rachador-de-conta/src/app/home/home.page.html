@@ -32,7 +32,7 @@
 
     <strong>Valor por Pessoa</strong>
     <ion-accordion-group>
-      <ion-accordion [value]="pessoa.getNome()" *ngFor="let pessoa of listaPessoas;">
+      <ion-accordion [value]="pessoa.getId()" *ngFor="let pessoa of listaPessoas;">
         <ion-item slot="header" color="light">
           <ion-label>{{ pessoa.getNome() }}</ion-label>
           <ion-label>{{ pessoa.getValorConta() | currency : 'BRL' }}</ion-label>

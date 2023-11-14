@@ -10,4 +10,47 @@
       <ion-title size="large">Itens</ion-title>
     </ion-toolbar>
   </ion-header>
+
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button>
+      <ion-icon id="open-modal" name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <div id="container" *ngIf="listaItens.length != 0">
+    <strong>Lista de Itens</strong>
+    <ion-item *ngFor="let item of listaItens;">
+      <ion-label>{{ item.getDescricao() }}</ion-label>
+      <ion-label>{{ item.getValor() | currency : 'BRL' }}</ion-label>
+      <ion-icon (click)="deleteItem(item.getId())" name="close"></ion-icon>
+    </ion-item>
+  </div>
+
+  <ion-modal trigger="open-modal">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button color="medium" (click)="cancel()">Voltar</ion-button>
+          </ion-buttons>
+          <ion-title>Novo Item</ion-title>
+          <ion-buttons slot="end">
+            <ion-button [disabled]="descricao.length < 3 || (valor == null || valor == 0)" (click)="confirm()"
+              [strong]="true">Adicionar</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <ion-item>
+          <ion-input labelPlacement="stacked" label="Descrição do Item" [(ngModel)]="descricao"
+            placeholder="Descrição"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input labelPlacement="stacked" label="Valor do Item" [(ngModel)]="valor" placeholder="Valor"
+            type="number"></ion-input>
+        </ion-item>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 </ion-content>

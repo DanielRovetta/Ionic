@@ -31,6 +31,22 @@ export class BusinessService {
     this.listaItens.push(item);
   }
 
+  deleteItem(id: number) {
+    let aux = this.listaItens.find((item) => id === item.getId());
+    if (aux) {
+      var index = this.listaItens.indexOf(aux);
+      this.listaItens.splice(index, 1);
+    }
+  }
+
+  deletePessoa(id: number) {
+    let aux = this.listaPessoas.find((pessoa) => id === pessoa.getId());
+    if (aux) {
+      var index = this.listaPessoas.indexOf(aux);
+      this.listaPessoas.splice(index, 1);
+    }
+  }
+
   getListaItem(): Array<Item> {
     return this.listaItens;
   }
@@ -38,6 +54,5 @@ export class BusinessService {
   getListaPessoa(): Array<Pessoa> {
     return this.listaPessoas;
   }
-
 
 }

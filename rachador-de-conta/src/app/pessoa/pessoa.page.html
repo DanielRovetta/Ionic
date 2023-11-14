@@ -10,4 +10,39 @@
       <ion-title size="large">Pessoas</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <div id="container" *ngIf="listaPessoas.length != 0">
+    <strong>Lista de Pessoas</strong>
+    <ion-item *ngFor="let pessoa of listaPessoas;">
+      <ion-label>{{ pessoa.getNome() }}</ion-label>
+      <ion-icon (click)="deletePessoa(pessoa.getId())" name="close"></ion-icon>
+    </ion-item>
+  </div>
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button>
+      <ion-icon id="open-modal" name="person-add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-modal trigger="open-modal">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button color="medium" (click)="cancel()">Voltar</ion-button>
+          </ion-buttons>
+          <ion-title>Nova Pessoa</ion-title>
+          <ion-buttons slot="end">
+            <ion-button [disabled]="nome.length < 3" (click)="confirm()" [strong]="true">Adicionar</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <ion-item>
+          <ion-input labelPlacement="stacked" label="Nome da Pessoa" [(ngModel)]="nome" placeholder="Nome"></ion-input>
+        </ion-item>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 </ion-content>
