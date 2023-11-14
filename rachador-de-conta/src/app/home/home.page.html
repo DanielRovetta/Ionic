@@ -23,8 +23,8 @@
         </ion-item>
         <div class="ion-padding" slot="content">
           <ion-label>Quem consumiu: </ion-label>
-          <ion-chip *ngFor="let pessoa of listaPessoas;">
-            <ion-label>{{ pessoa.getNome() }}</ion-label>
+          <ion-chip *ngFor="let consumo of getAllConsumoByIdItem(item.getId());">
+            <ion-label>{{ consumo.getPessoa().getNome() }}</ion-label>
           </ion-chip>
         </div>
       </ion-accordion>
@@ -39,8 +39,8 @@
         </ion-item>
         <div class="ion-padding" slot="content">
           <ion-label>O que consumiu: </ion-label>
-          <ion-chip *ngFor="let item of listaItens;">
-            <ion-label>{{ item.getDescricao() }}</ion-label>
+          <ion-chip *ngFor="let consumo of getAllConsumoByIdPessoa(pessoa.getId());">
+            <ion-label>{{ consumo.getItem().getDescricao() }}</ion-label>
           </ion-chip>
         </div>
       </ion-accordion>

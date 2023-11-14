@@ -19,6 +19,42 @@ export class BusinessService {
 
   constructor() { }
 
+  getAllItem(): Array<Item> {
+    return this.listaItens;
+  }
+
+  getAllPessoa(): Array<Pessoa> {
+    return this.listaPessoas;
+  }
+
+  getAllConsumo(): Array<Consumo> {
+    return this.listaConsumos;
+  }
+
+  getPessoaById(id: number) {
+    let aux = this.listaPessoas.find((pessoa) => id === pessoa.getId());
+    if (aux) {
+      return aux;
+    }
+    return null
+  }
+
+  getItemById(id: number) {
+    let aux = this.listaItens.find((item) => id === item.getId());
+    if (aux) {
+      return aux;
+    }
+    return null
+  }
+
+  getAllConsumoByIdPessoa(id: number) {
+    return this.listaConsumos.filter(consumo => id === consumo.getPessoa().getId());
+  }
+
+  getAllConsumoByIdItem(id: number) {
+    return this.listaConsumos.filter(consumo => id === consumo.getItem().getId());
+  }
+
   insertPessoa(pessoa: Pessoa) {
     pessoa.setId(this.idPessoa);
     this.idPessoa++;
@@ -43,21 +79,7 @@ export class BusinessService {
     this.listaConsumos.push(consumo);
   }
 
-  getPessoaById(id: number) {
-    let aux = this.listaPessoas.find((pessoa) => id === pessoa.getId());
-    if (aux) {
-      return aux;
-    }
-    return null
-  }
 
-  getItemById(id: number) {
-    let aux = this.listaItens.find((item) => id === item.getId());
-    if (aux) {
-      return aux;
-    }
-    return null
-  }
 
   deleteItem(id: number) {
     let aux = this.listaItens.find((item) => id === item.getId());
@@ -81,18 +103,6 @@ export class BusinessService {
       var index = this.listaConsumos.indexOf(aux);
       this.listaConsumos.splice(index, 1);
     }
-  }
-
-  getListaItem(): Array<Item> {
-    return this.listaItens;
-  }
-
-  getListaPessoa(): Array<Pessoa> {
-    return this.listaPessoas;
-  }
-
-  getListaConsumo(): Array<Consumo> {
-    return this.listaConsumos;
   }
 
 }

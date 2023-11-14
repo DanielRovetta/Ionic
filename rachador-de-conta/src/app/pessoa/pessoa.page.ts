@@ -35,6 +35,6 @@ export class PessoaPage implements OnInit {
   }
 
   ngOnInit() {
-    this.listaPessoas = this.business.getListaPessoa();
+    this.listaPessoas = this.business.getAllPessoa();
   }
 }

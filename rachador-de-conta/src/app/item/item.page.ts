@@ -35,7 +35,7 @@ export class ItemPage implements OnInit {
   }
 
   ngOnInit() {
-    this.listaItens = this.business.getListaItem();
+    this.listaItens = this.business.getAllItem();
   }
 
 }

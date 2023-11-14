@@ -49,9 +49,9 @@ export class ContaPage implements OnInit {
   }
 
   ngOnInit() {
-    this.listaPessoas = this.business.getListaPessoa();
-    this.listaItens = this.business.getListaItem();
-    this.listaConsumos = this.business.getListaConsumo();
+    this.listaPessoas = this.business.getAllPessoa();
+    this.listaItens = this.business.getAllItem();
+    this.listaConsumos = this.business.getAllConsumo();
   }
 
 }

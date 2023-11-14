@@ -52,8 +52,16 @@ export class HomePage {
 
   }
 
+  getAllConsumoByIdPessoa(id: number) {
+    return this.business.getAllConsumoByIdPessoa(id);
+  }
+
+  getAllConsumoByIdItem(id: number) {
+    return this.business.getAllConsumoByIdItem(id);
+  }
+
   ngOnInit() {
-    this.listaItens = this.business.getListaItem();
-    this.listaPessoas = this.business.getListaPessoa();
+    this.listaItens = this.business.getAllItem();
+    this.listaPessoas = this.business.getAllPessoa();
   }
 }
