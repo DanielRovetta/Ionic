@@ -1,6 +1,9 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Consumo</ion-title>
+    <ion-title>
+      <ion-icon name="restaurant"></ion-icon>
+      Consumo
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -11,7 +14,7 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
+  <div id="container" *ngIf="listaConsumos.length != 0">
     <h1>Lista de Consumo</h1>
     <ion-item *ngFor="let consumo of listaConsumos;">
       <ion-label>{{ consumo.getPessoa().getNome()}}</ion-label>

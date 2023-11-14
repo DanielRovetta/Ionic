@@ -1,6 +1,9 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Itens</ion-title>
+    <ion-title>
+      <ion-icon name="basket"></ion-icon>
+      Itens
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -19,7 +22,7 @@
   </ion-fab>
 
   <div id="container" *ngIf="listaItens.length != 0">
-    <strong>Lista de Itens</strong>
+    <h1>Lista de Itens</h1>
     <ion-item *ngFor="let item of listaItens;">
       <ion-label>{{ item.getDescricao() }}</ion-label>
       <ion-label>{{ item.getValor() | currency : 'BRL' }}</ion-label>
