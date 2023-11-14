@@ -32,25 +32,31 @@ export class BusinessService {
   }
 
   insertConsumo(consumo: Consumo) {
+
+    let aux = this.listaConsumos.find((con) => consumo.getPessoa().getId() === con.getPessoa().getId() && consumo.getItem().getId() === con.getItem().getId())
+    if (aux) {
+      aux.setPeso(aux.getPeso() + consumo.getPeso());
+      return;
+    }
     consumo.setId(this.idConsumo);
     this.idConsumo++;
     this.listaConsumos.push(consumo);
   }
 
-  getPessoaById(id: number): Pessoa {
+  getPessoaById(id: number) {
     let aux = this.listaPessoas.find((pessoa) => id === pessoa.getId());
     if (aux) {
       return aux;
     }
-    return new Pessoa(0, "");
+    return null
   }
 
-  getItemById(id: number): Item {
+  getItemById(id: number) {
     let aux = this.listaItens.find((item) => id === item.getId());
     if (aux) {
       return aux;
     }
-    return new Item(0, "", 0);
+    return null
   }
 
   deleteItem(id: number) {
