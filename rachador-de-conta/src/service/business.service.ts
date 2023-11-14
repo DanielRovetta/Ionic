@@ -31,20 +31,20 @@ export class BusinessService {
     return this.listaConsumos;
   }
 
-  getPessoaById(id: number) {
+  getPessoaById(id: number): Pessoa {
     let aux = this.listaPessoas.find((pessoa) => id === pessoa.getId());
     if (aux) {
       return aux;
     }
-    return null
+    return new Pessoa(0, "");
   }
 
-  getItemById(id: number) {
+  getItemById(id: number): Item {
     let aux = this.listaItens.find((item) => id === item.getId());
     if (aux) {
       return aux;
     }
-    return null
+    return new Item(0, "", 0);
   }
 
   getAllConsumoByIdPessoa(id: number) {
@@ -112,6 +112,13 @@ export class BusinessService {
 
   zerarValorContaPessoa() {
     this.listaPessoas.forEach(pessoa => pessoa.setValorConta(0));
+  }
+
+  fracaoValorByItem(item: Item): number {
+    let consumos = this.getAllConsumoByIdItem(item.getId());
+    let pesos: number = 0;
+    consumos.forEach(consumo => pesos += consumo.getPeso());
+    return item.getValor() / pesos;
   }
 
   processarContaPessoa() {

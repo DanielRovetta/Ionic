@@ -24,7 +24,9 @@
         <div class="ion-padding" slot="content">
           <ion-label>Quem consumiu: </ion-label>
           <ion-chip *ngFor="let consumo of getAllConsumoByIdItem(item.getId());">
-            <ion-label>{{ consumo.getPessoa().getNome() }}</ion-label>
+            <ion-label>{{ consumo.getPessoa().getNome() + " " + ((consumo.getPeso() * fracaoValorByItem(item)) |
+              currency
+              : 'BRL' )}} </ion-label>
           </ion-chip>
         </div>
       </ion-accordion>
@@ -40,7 +42,10 @@
         <div class="ion-padding" slot="content">
           <ion-label>O que consumiu: </ion-label>
           <ion-chip *ngFor="let consumo of getAllConsumoByIdPessoa(pessoa.getId());">
-            <ion-label>{{ consumo.getItem().getDescricao() }}</ion-label>
+            <ion-label>{{ consumo.getItem().getDescricao() + " " + ((consumo.getPeso() *
+              fracaoValorByItem(consumo.getItem())) |
+              currency
+              : 'BRL' ) }}</ion-label>
           </ion-chip>
         </div>
       </ion-accordion>

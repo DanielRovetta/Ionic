@@ -64,6 +64,10 @@ export class HomePage {
 
   }
 
+  fracaoValorByItem(item: Item): number {
+    return this.business.fracaoValorByItem(item);
+  }
+
   processarContaPessoa() {
     this.listaItens = this.business.getAllItem();
     this.listaPessoas = this.business.getAllPessoa();
