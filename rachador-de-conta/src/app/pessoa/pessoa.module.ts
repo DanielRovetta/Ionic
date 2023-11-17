@@ -7,14 +7,18 @@ import { IonicModule } from '@ionic/angular';
 import { PessoaPageRoutingModule } from './pessoa-routing.module';
 
 import { PessoaPage } from './pessoa.page';
+import { CdkDrag } from '@angular/cdk/drag-drop';
+
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PessoaPageRoutingModule
+    PessoaPageRoutingModule,
+    CdkDrag
+
   ],
   declarations: [PessoaPage]
 })
-export class PessoaPageModule {}
+export class PessoaPageModule { }

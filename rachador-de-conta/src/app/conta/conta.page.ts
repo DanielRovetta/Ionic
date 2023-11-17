@@ -8,7 +8,6 @@ import { BusinessService } from 'src/service/business.service';
 @Component({
   selector: 'app-conta',
   templateUrl: './conta.page.html',
-
   styleUrls: ['./conta.page.scss'],
 })
 export class ContaPage implements OnInit {

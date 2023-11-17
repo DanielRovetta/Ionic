@@ -7,14 +7,17 @@ import { IonicModule } from '@ionic/angular';
 import { ItemPageRoutingModule } from './item-routing.module';
 
 import { ItemPage } from './item.page';
+import { CdkDrag } from '@angular/cdk/drag-drop';
+
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ItemPageRoutingModule
+    ItemPageRoutingModule,
+    CdkDrag
   ],
   declarations: [ItemPage]
 })
-export class ItemPageModule {}
+export class ItemPageModule { }
