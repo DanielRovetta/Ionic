@@ -20,6 +20,9 @@ export class ContaPage implements OnInit {
   item: any;
   peso: number = 1;
 
+  allItens: boolean = false;
+  allPessoas: boolean = false;
+
   constructor(private business: BusinessService, private modalCtrl: ModalController) {
   }
 
@@ -28,15 +31,31 @@ export class ContaPage implements OnInit {
   }
 
   cancel() {
+    this.pessoa = null;
+    this.item = null;
+    this.peso = 1;
+    this.allItens = false;
+    this.allPessoas = false;
     return this.modalCtrl.dismiss(null, 'cancel');
   }
 
   confirm() {
     let consumo: Consumo = new Consumo(0, this.pessoa, this.item, this.peso);
-    this.business.insertConsumo(consumo);
+
+    if (this.allItens == false && this.allPessoas == false) {
+      this.business.insertConsumo(consumo);
+    }
+    if (this.allItens) {
+      this.business.insertConsumoAllToPessoa(this.pessoa);
+    }
+    if (this.allPessoas) {
+      this.business.insertConsumoAllToItem(this.item);
+    }
     this.pessoa = null;
     this.item = null;
     this.peso = 1;
+    this.allItens = false;
+    this.allPessoas = false;
     return this.modalCtrl.dismiss(null, 'confirm');
   }
   selectPessoa(ev: any) {

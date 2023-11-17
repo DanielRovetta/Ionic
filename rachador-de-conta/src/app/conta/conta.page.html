@@ -39,25 +39,32 @@
           </ion-buttons>
           <ion-title>Novo Consumo</ion-title>
           <ion-buttons slot="end">
-            <ion-button [disabled]="pessoa ==  null || peso == 0 || item ==  null  " (click)="confirm()"
-              [strong]="true">Adicionar</ion-button>
+            <ion-button
+              [disabled]="(!(pessoa ==  null  && allPessoas)  && !(item ==  null && allItens)) && ((pessoa ==  null   || item ==  null) || (peso == 0))"
+              (click)="confirm()" [strong]="true">Adicionar</ion-button>
           </ion-buttons>
         </ion-toolbar>
       </ion-header>
       <ion-content class="ion-padding">
         <ion-item>
-          <ion-select label="Pessoa" placeholder="Selecione" (ionChange)="selectPessoa($event)">
+          <ion-select [disabled]="allPessoas" label="Pessoa" placeholder="Selecione" (ionChange)="selectPessoa($event)">
             <ion-select-option *ngFor="let p of listaPessoas;" [value]="p">{{p.getNome()}}</ion-select-option>
           </ion-select>
         </ion-item>
         <ion-item>
-          <ion-select label="Item" placeholder="Selecione" (ionChange)="selectItem($event)">
+          <ion-select label="Item" [disabled]="allItens" placeholder="Selecione" (ionChange)="selectItem($event)">
             <ion-select-option *ngFor="let i of listaItens;" [value]="i">{{i.getDescricao()}}</ion-select-option>
           </ion-select>
         </ion-item>
         <ion-item>
-          <ion-input labelPlacement="stacked" label="Peso do consumo" [(ngModel)]="peso" placeholder="Peso"
-            type="number"></ion-input>
+          <ion-input [disabled]="allPessoas || allItens" labelPlacement="stacked" label="Peso do consumo"
+            [(ngModel)]="peso" placeholder="Peso" type="number"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="!(!(pessoa ==  null) || !(peso == 1) || item ==  null)">
+          <ion-checkbox [(ngModel)]="allPessoas">Todos consumiram este item?</ion-checkbox>
+        </ion-item>
+        <ion-item *ngIf="!(pessoa ==  null || !(peso == 1) || !(item ==  null))">
+          <ion-checkbox [(ngModel)]="allItens">Consumiu todos os itens?</ion-checkbox>
         </ion-item>
       </ion-content>
     </ng-template>

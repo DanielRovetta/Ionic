@@ -1,5 +1,5 @@
+import { Consumo } from './../class/consumo';
 import { Injectable } from '@angular/core';
-import { Consumo } from 'src/class/consumo';
 import { Item } from 'src/class/item';
 import { Pessoa } from 'src/class/pessoa';
 
@@ -77,6 +77,20 @@ export class BusinessService {
     consumo.setId(this.idConsumo);
     this.idConsumo++;
     this.listaConsumos.push(consumo);
+  }
+
+  insertConsumoAllToItem(item: Item) {
+    this.listaPessoas.forEach((pessoa) => {
+      let consumo: Consumo = new Consumo(0, pessoa, item, 1);
+      this.insertConsumo(consumo);
+    });
+  }
+
+  insertConsumoAllToPessoa(pessoa: Pessoa) {
+    this.listaItens.forEach((item) => {
+      let consumo: Consumo = new Consumo(0, pessoa, item, 1);
+      this.insertConsumo(consumo);
+    });
   }
 
   deleteItem(id: number) {
