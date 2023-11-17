@@ -1,5 +1,7 @@
 {
   "name": "rachador-de-conta",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
