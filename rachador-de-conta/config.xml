@@ -2,7 +2,7 @@
 <widget id="io.ionic.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Rachador de Conta</name>
     <description>Aplicativo para facilitar o racha das despesas</description>
-    <author email="daniel.rovettapassos@gmail.com" >Daniel Rovetta</author>
+    <author email="daniel.rovettapassos@gmail.com">Daniel Rovetta</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
@@ -17,7 +17,6 @@
     <preference name="FadeSplashScreenDuration" value="300" />
     <preference name="SplashShowOnlyFirstTime" value="false" />
     <preference name="SplashScreen" value="nome" />
-    <!-- <preference name="SplashScreen" value="screen" /> -->
     <preference name="SplashScreenDelay" value="3000" />
     <platform name="android">
         <preference name="Scheme" value="http" />

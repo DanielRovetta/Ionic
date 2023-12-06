@@ -1,11 +1,33 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" id="main-content">
   <ion-toolbar>
     <ion-title>
       <ion-icon name="receipt"></ion-icon>
       Conta
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
+
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <ion-button expand="full">
+      Salvar Dados
+    </ion-button>
+    <ion-button expand="full">
+      Carregar Dados
+    </ion-button>
+    <ion-button expand="full">
+      Zerar Dados
+    </ion-button>
+  </ion-content>
+</ion-menu>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">

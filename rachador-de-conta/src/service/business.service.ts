@@ -2,6 +2,7 @@ import { Consumo } from './../class/consumo';
 import { Injectable } from '@angular/core';
 import { Item } from 'src/class/item';
 import { Pessoa } from 'src/class/pessoa';
+import { Storage } from '@ionic/storage-angular';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,35 @@ export class BusinessService {
   private idPessoa = 1;
   private idConsumo = 1;
 
-  constructor() { }
+  constructor(private storage: Storage) {
+    this.iniciarStorage()
+
+  }
+
+  async iniciarStorage() {
+    await this.storage.create();
+  }
+
+  async salvarDados() {
+    await this.storage['set']('listaConsumos', this.listaConsumos);
+    await this.storage['set']('listaPessoas', this.listaPessoas);
+    await this.storage['set']('listaItens', this.listaItens);
+  }
+
+  async carregarDados() {
+    this.listaConsumos = await this.storage['get']('listaConsumos');
+    this.listaPessoas = await this.storage['get']('listaPessoas');
+    this.listaItens = await this.storage['get']('listaItens');
+  }
+  async zerarDados() {
+    this.listaConsumos = [];
+    this.listaPessoas = [];
+    this.listaItens = [];
+    await this.storage['remove']('listaConsumos');
+    await this.storage['remove']('listaPessoas');
+    await this.storage['remove']('listaItens');
+  }
+
 
   getAllItem(): Array<Item> {
     return this.listaItens;
