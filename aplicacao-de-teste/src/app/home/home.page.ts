@@ -17,8 +17,8 @@ export class HomePage {
 
   public adicionarEventoAoCalendario(titulo: string, local: string, anotacao: string, dataInicio: Date, dataFim: Date) {
     this.calendar.createEventInteractively(titulo, local, anotacao, dataInicio, dataFim)
-      .then(() => console.log('Evento adicionado com sucesso ao calendário'))
-      .catch(error => console.error('Erro ao adicionar evento ao calendário', error));
+      .then(() => alert('Evento adicionado com sucesso ao calendário'))
+      .catch(error => alert('Erro ao adicionar evento ao calendário: ' + error));
   }
 
   public adicionarEvento() {

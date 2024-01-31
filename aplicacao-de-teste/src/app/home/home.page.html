@@ -25,8 +25,8 @@
       <ion-input labelPlacement="stacked" label="Anotação" [(ngModel)]="anotacao" placeholder="Anotação"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label>Data e Hora</ion-label>
-      <ion-datetime displayFormat="DD/MM/YYYY HH:mm" [(ngModel)]="dataHoraSelecionada"></ion-datetime>
+      <ion-datetime labelPlacement="stacked" label="Data e Hora" displayFormat="DD/MM/YYYY HH:mm"
+        [(ngModel)]="dataHoraSelecionada"></ion-datetime>
     </ion-item>
 
     <ion-button expand="full" (click)="adicionarEvento()">Adicionar</ion-button>
