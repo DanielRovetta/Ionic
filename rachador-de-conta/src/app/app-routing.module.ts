@@ -1,3 +1,4 @@
+import { MenuLateralComponent } from './menu-lateral/menu-lateral.component';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
@@ -26,7 +27,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [
+  imports: [MenuLateralComponent,
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
   ],
   exports: [RouterModule]

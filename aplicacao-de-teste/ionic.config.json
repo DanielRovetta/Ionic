@@ -1,0 +1,10 @@
+{
+  "name": "aplicacao-de-teste",
+  "integrations": {
+    "capacitor": {
+      "enabled": false
+    },
+    "cordova": {}
+  },
+  "type": "angular"
+}

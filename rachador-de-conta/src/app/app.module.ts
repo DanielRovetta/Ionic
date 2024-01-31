@@ -9,15 +9,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { BusinessService } from 'src/service/business.service';
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { Drivers } from '@ionic/storage';
+import { MenuLateralComponent } from './menu-lateral/menu-lateral.component';
 
 
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, IonicStorageModule.forRoot({
+  imports: [MenuLateralComponent, BrowserModule, IonicModule.forRoot(), AppRoutingModule, IonicStorageModule.forRoot({
     driverOrder: [Drivers.IndexedDB, Drivers.LocalStorage],
   }),],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, BusinessService],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent], exports: [MenuLateralComponent],
+
 })
 export class AppModule { }
